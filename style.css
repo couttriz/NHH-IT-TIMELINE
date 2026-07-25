@@ -1,0 +1,144 @@
+/* --- BIẾN MÀU SẮC --- */
+:root {
+    --bg-page: #f1f5f9;
+    --bg-card: #ffffff;
+    --text-main: #1e293b;
+    --border: #e2e8f0;
+    --fc-bg: #ffffff;
+    --fc-border: #e2e8f0;
+    --fc-header: #f8fafc;
+    --fc-today: rgba(79, 70, 229, 0.05);
+}
+
+body.dark {
+    --bg-page: #0f172a;
+    --bg-card: #1e293b;
+    --text-main: #f8fafc;
+    --border: #334155;
+    --fc-bg: #1e293b;
+    --fc-border: #334155;
+    --fc-header: #2d3748; 
+    --fc-today: rgba(99, 102, 241, 0.15);
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    transition: background 0.3s ease;
+}
+
+/* Modal Animation */
+#event-modal:not(.hidden) #modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* --- TÙY CHỈNH FULLCALENDAR --- */
+.fc {
+    background-color: var(--fc-bg) !important;
+    color: var(--text-main) !important;
+    padding: 10px;
+    border: none !important;
+}
+
+/* Màu các đường kẻ bảng */
+.fc-theme-standard td, .fc-theme-standard th, .fc-scrollgrid {
+    border-color: var(--fc-border) !important;
+}
+
+/* Màu tiêu đề (Th 2 - CN) và tiêu đề trong danh sách */
+.fc-col-header-cell, .fc-list-day-cushion {
+    background-color: var(--fc-header) !important;
+}
+
+.fc-col-header-cell-cushion, .fc-list-day-text, .fc-list-day-side-text {
+    color: var(--text-main) !important;
+    font-weight: 700 !important;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: 12px 0 !important;
+}
+
+.fc-day-today {
+    background-color: var(--fc-today) !important;
+}
+
+/* Nút bấm của lịch */
+.fc-button-primary {
+    background-color: #4f46e5 !important;
+    border: none !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    font-size: 0.8rem !important;
+}
+
+.fc-button-active {
+    background-color: #3730a3 !important;
+}
+
+/* Sự kiện trên lịch */
+.fc-event {
+    border: none !important;
+    padding: 3px 6px !important;
+    border-radius: 6px !important;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.75rem !important;
+}
+
+/* Chỉnh sửa hiển thị danh sách trong Dark Mode */
+.fc-list-event:hover td {
+    background-color: var(--fc-header) !important;
+}
+
+/* Ẩn thanh cuộn dư thừa */
+.fc-scroller {
+    overflow: hidden !important;
+}
+
+@media (max-width: 768px) {
+    .fc-toolbar {
+        flex-direction: column !important;
+        gap: 12px;
+    }
+    .fc-toolbar-title { font-size: 1.1rem !important; }
+}
+
+/* --- TRẠNG THÁI TIẾN ĐỘ --- */
+/* Đã hoàn thành: Gạch ngang chữ, làm mờ nhẹ */
+.event-completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+    filter: grayscale(80%);
+}
+
+/* Sự kiện chưa bắt đầu: Làm mờ nhẹ */
+.event-not-started {
+    opacity: 0.5 !important;
+    filter: grayscale(40%);
+}
+
+/* Thêm icon tick xanh trước tiêu đề sự kiện đã hoàn thành */
+.event-completed .fc-event-title::before {
+    content: '✅ ';
+}
+
+/* Thêm icon đồng hồ cát trước tiêu đề sự kiện đang làm */
+.event-in-progress .fc-event-title::before {
+    content: '⏳ ';
+}
+
+/* Custom Scrollbar cho phần Danh sách Deadline */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 10px;
+}
+body.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #475569;
+}
